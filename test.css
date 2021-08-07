@@ -1,0 +1,30 @@
+* {
+    color: green;
+}
+
+li {
+    color: blue;
+}
+#special {
+    color:pink;
+}
+
+.red {
+    background: blueviolet;
+    width: 100px;
+    height: 100px;
+}
+
+button:hover {
+    color: red;
+    background-color: beige;
+}
+
+
+/*  a[href] href tag포함된 것적용 
+    a[href^="naver"]  시작하는것 
+    a[href$=".com"] 끝나는것
+*/
+a[href$=".com"] {
+    color: purple;
+}
