@@ -1,0 +1,33 @@
+.container {
+    background-color: beige;
+    height: 100vh;
+    /* vh: view height */
+    display: flex;
+}
+
+.item {
+    width: 40px;
+    height: 40px;
+    border:1px solid black;
+}
+
+.item1 {
+    background: #f481b1;
+    flex: 2 2 auto; /* grow, shrink, basis */
+    align-self: center;
+}
+
+.item2 {
+    background: #2bade9;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.item3 {
+    background: #9dff00;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+
+
