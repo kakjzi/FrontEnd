@@ -1,0 +1,12 @@
+css
+
+color , background-color, backgroud
+
+세개의 차이점은
+
+
+color 텍스트 색상
+
+background-color 배경색
+
+background  배경 태그를 한 줄로 결합 (함축_?)

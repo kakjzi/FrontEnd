@@ -1,0 +1,61 @@
+.container {
+    background-color: beige;
+    height: 100vh;
+    /* vh: view height */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* flex-flow:column nowrap; */
+    
+     justify-content: space-between;  /*  main axis  */
+    align-items: baseline;    /*   axis  */
+    align-content: center;
+}
+
+.item {
+    width: 40px;
+    height: 40px;
+    border:1px solid black;
+}
+
+.item1 {
+    background: #f481b1;
+    padding: 20px;
+}
+
+.item2 {
+    background: #f481b1;
+}
+
+.item3 {
+    background: #ce93d8;
+}
+
+
+.item4 {
+    background: #b39ddb;
+}
+
+.item5 {
+    background: #90caf9;
+}
+
+.item6 {
+    background: #a5d6a7;
+}
+
+.item7 {
+    background: #d1f5a1;
+}
+.item8 {
+    background: #2ae2ba;
+}
+
+.item9 {
+    background: #6d88ff;
+}
+
+.item10 {
+    background: #ef9a9a;
+}
+
