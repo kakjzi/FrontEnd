@@ -1,4 +1,23 @@
-const days =["mom","mem2","emem2m2","e2m",1,2,3,4,5,6];
+const calc ={
+    add: function(a,b){
+        console.log(a+b);
+    },
+    minus: function(a,b){
+        console.log(a-b);
+    },
+    multi: function(a,b){
+        console.log(a*b);
+    },
+    div: function(a,b){
+        console.log(a/b);
+    },
+    power: function(a,b){
+        console.log(a ** b);
+    }
+};
 
-console.log(days);
-console.log(days[5]);
+calc.add(1,2)
+calc.minus(1,2)
+calc.multi(1,2)
+calc.div(1,2)
+calc.power(3,2)
