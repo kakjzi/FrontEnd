@@ -2,16 +2,16 @@ const h1 = document.querySelector(".heheheheh");
 
 //if else
 h1.onclick = (event) => {
-    const curColor = h1.style.color;
-    let newColor;
-    
-    if(curColor === "blue"){
-        newColor ="tomato";
-    }else {
-        newColor="blue";
+    const clickedClass = "clicked";
+    if (h1.className ===  clickedClass){
+        h1.className ="";
+    }else{
+        h1.className = clickedClass;
     }
-    h1.style.color = newColor;
+    console.log(h1.className);
 };
+
+
 
 
 
