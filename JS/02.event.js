@@ -19,7 +19,7 @@ console.dir(title)
     });
     4. title.onclick = (event) =>{
         console.log("Clciked");
-    });
+    };
 */
 console.dir(document.body)
 
