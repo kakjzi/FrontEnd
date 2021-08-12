@@ -26,3 +26,9 @@ loginButton.onclick = (event) => {
 
 
 // 문제는 Web Page 새로고침되는 현상
+
+loginForm.onsubmit =(event)=>{
+    //새로고침막는 함수
+    event.preventDefault(); 
+    console.log(loginInput.value);
+}
