@@ -21,8 +21,9 @@ if(savedUsername === null){
         event.preventDefault(); 
         loginForm.classList.add("hidden");
         const username = loginInput.value;
-        localStorage.setItem(USERNAME_KEY, username)
+        localStorage.setItem(USERNAME_KEY, username);
         paintGreetings(username);
+        console.dir(loginForm);
     }
 } else {
     paintGreetings(savedUsername);
