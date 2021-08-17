@@ -9,6 +9,10 @@ const chosenImage = images[Math.floor(Math.random() * images.length)];
 const bgImage = document.createElement("img");
 
 bgImage.src = `img/${chosenImage}`;
+document.body.prepend(bgImage);
 
-document.body.appendChild(bgImage);
+// bgImage.style.opacity = "0.5";
+
+
 //prepend -요소를 맨앞으로 붙임.
+
