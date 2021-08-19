@@ -19,7 +19,7 @@
         <span></span>
     </div>
     <form id="login-form" class="hidden">
-        <input required maxlength = "15" type="text" placeholder="What is your name?" />
+        <input required maxlength = "15" type="text" placeholder="What is your name?" pattern=".{3,}" oninvalid="alert('3글자이상')"/>
         <input type="submit" value="Log In" /> <br>
     </form> 
     <h2 id="clock"></h2>
