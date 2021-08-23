@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin:0 auto;
+            background-color: black;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            margin-top: 3px;
+            background-color:antiquewhite ;
+        }
+        .ddd2{
+            position: sticky;
+            top:0px;
+            background-color: aqua;
+        }
+        .rect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            border-radius: 10%;
+            text-align: center;
+            line-height: 150px;
+            color: aqua;
+            background-color: #ee6c4d;
+            transform: translate(-50%, -50%);
+            user-select: none;
+        }
+        .rect:focus {
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="ddd2"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div> 
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        alert("주황색 상자를 더블클릭해보세요")
+        const blueblocks = document.querySelectorAll('div');
+        
+        let count = 1;
+        blueblocks.forEach( (target) =>
+            target.onclick =(e)=>{
+                let blockposition = target.getBoundingClientRect();
+
+                console.log(`============${count}==================`);
+                console.log(`blueblock client x,y : (${String(e.clientX)}, ${String(e.clientY)})`);
+                console.log(`blueblock  page x, y : (${String(e.pageX)}, ${String(e.pageY)})`);
+                console.log(`window InnerSize (${window.innerWidth}, ${window.innerHeight})`);
+                console.log(`blockPosition : (${blockposition.x},${blockposition.y})`)
+                count++;
+    });
+    const block = document.querySelector('.ddd2');
+
+    const mousemove = document.createElement('div');
+    mousemove.setAttribute('class', 'rect');
+    const mousetxt = document.createTextNode('더블클릭 on/off');
+
+    mousemove.appendChild(mousetxt);
+    document.body.appendChild(mousemove);
+    const rect = document.querySelector(".rect");
+    let isactive = false 
+
+    rect.ondblclick =(e)=>{
+        console.log(isactive)
+        if (isactive === true){
+            return  isactive = false ;
+        } else{
+            return isactive = true;
+        }
+    }
+
+        document.body.onmousemove = (e) => {
+            if (isactive === true) {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            rect.style.left = mouseX + 'px';
+            rect.style.top =(mouseY + document.documentElement.scrollTop )+ 'px';
+            }
+        };
+
+        window.onload=(()=>
+        document.body.onmouseenter = (e) =>{
+            if (isactive == true) {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            rect.style.left = mouseX+ 'px';
+            rect.style.top = mouseY+ 'px';
+            console.log(`${rect.style.left} , ${rect.style.top}`);
+            }
+        });
+    </script>
+</body>
+</html>
