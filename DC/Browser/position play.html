@@ -38,6 +38,14 @@
         .rect:focus {
             background: white;
         }
+        .on{
+            color : royalblue;
+            font-size: 28px;
+        }
+        .off{
+            color : green;
+            font-size: 10px;
+        }
     </style>
 </head>
 <body>
@@ -114,10 +122,15 @@
     let isactive = false 
 
     rect.ondblclick =(e)=>{
-        console.log(isactive)
+      
         if (isactive === true){
+            rect.classList.add('off');
+            rect.classList.remove('on');
+ 
             return  isactive = false ;
         } else{
+            rect.classList.add('on');
+            rect.classList.remove('off')
             return isactive = true;
         }
     }
