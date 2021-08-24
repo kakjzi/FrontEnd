@@ -56,26 +56,36 @@
             color : green;
             font-size: 10px;
         }
+
+        aside{
+            position: fixed;
+            top:1px;
+            right: 10px;
+        }
     </style>
 </head>
 <body>
+    <aside>
+        <input class ="scroll-by-100px" type="button" value="scroll by 100px">
+        <input class ="scroll-to-100px" type="button" value="scroll to 100px">
+        <input class ="scroll-to-blueBlock" type="button" value="scroll to blueBlock">
+    </aside>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
     <div class="ddd2"></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
     <div></div>
     <div></div>
     <div></div>
@@ -105,7 +115,7 @@
     <div></div>
     <div></div>
     <script>
-        alert("주황색 상자를 더블클릭해보세요")
+        <!-- alert("주황색 상자를 더블클릭해보세요") -->
         const blueblocks = document.querySelectorAll('div');
         
         let count = 1;
@@ -132,11 +142,9 @@
     let isactive = false 
 
     rect.ondblclick =(e)=>{
-      
         if (isactive === true){
             rect.classList.add('off');
             rect.classList.remove('on');
- 
             return  isactive = false ;
         } else{
             rect.classList.add('on');
@@ -144,7 +152,6 @@
             return isactive = true;
         }
     }
-
         document.body.onmousemove = (e) => {
             if (isactive === true) {
             const mouseX = e.clientX;
@@ -164,6 +171,23 @@
             console.log(`${rect.style.left} , ${rect.style.top}`);
             }
         });
+
+        const scrollby100 = document.querySelector('.scroll-by-100px');
+        const scrollto100 = document.querySelector('.scroll-to-100px');
+        const scrolltoBlueBlock = document.querySelector('.scroll-to-blueBlock');
+
+        //스크롤 100px 이동
+        scrollby100.onclick = (e)=>{
+            window.scrollBy({top:100, left:0, behavior: 'smooth'})
+        };
+        //화면내 100px  이동
+        scrollto100.onclick = (e)=>{
+            window.scrollTo({top:300,left:0,behavior: "auto"})
+        };
+        //특정 요소로 이동
+        scrolltoBlueBlock.onclick = (e)=>{
+            block.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+        };
     </script>
 </body>
 </html>
