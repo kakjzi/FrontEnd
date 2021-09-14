@@ -23,7 +23,7 @@ function createItem(text){
     const itemDivider = document.createElement('div');
     itemDivider.setAttribute('class', 'item_divider');
 
-    effectBtn.appendChild(delBtn);
+    effectBtn.appendChild(delBtn)
     item.appendChild(name);
     item.appendChild(effectBtn);
 
@@ -54,4 +54,4 @@ input.onkeypress= () =>{
     if (window.event.keyCode == 13) {
         addBtn.onclick();
     }
-}
+};
