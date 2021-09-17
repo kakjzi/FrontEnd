@@ -2,33 +2,21 @@
 <template>
 
 <!-- modal -->
-<div class="black-bg" v-if="isShowModal == true ">
-  <div class="white-bg">
-    <img :src ="원룸[numItem].image" class = "modal-img">
-    <h4>이름 : {{원룸[numItem].title}}</h4>
-    <p>가격 : {{원룸[numItem].price}} 원</p>
-    <p>상세설명 : {{원룸[numItem].content}}</p>
-      <Discount/>
-    <button @click="isShowModal = false">닫기</button>
-  </div>
-</div>
-
+<Modal @close="isShowModal = false"  :isShowModal="isShowModal" :numItem="numItem" :원룸= "원룸" :신고수="신고수" />
 <Discount/>
 
 <div class="menu">
   <a v-for="item in menuItem" :key="item">{{item}}</a>
 </div>
 
-<div v-for="(a,i) in 원룸" :key="i">
-  <img :src="a.image" class="room-img">
-  <h4 @click="isShowModal = true; numItem = i">{{a.title}}</h4>
-  <p>{{a.price}} 원</p>
-</div>
+<Card @openModal="isShowModal = true; numItem=$event;" @report="신고수[i]++;" v-for="(item,i) in 원룸" :key="i" :isShowModal="isShowModal" :원룸= "원룸[i]" :신고수="신고수[i]"/>
 </template>
 
 <script>
 import data from './post';
-import Discount from './Discount.vue';
+import discount from './components/Discount.vue';
+import modal from './components/Modal.vue';
+import card from './components/Card.vue';
 
 export default {
   name: 'App',
@@ -37,18 +25,18 @@ export default {
       numItem : 0 , 
       원룸 : data,
       isShowModal : false,
-      신고수 : [0, 0, 0],
-      price : ['70', '100', '20'],
+      신고수 : [0, 0, 0, 0, 0, 0],
       menuItem : ['Home', 'Shop', 'About'],
-      products : ['역삼동원룸', '천호동원룸', '송내동원룸']
     }
   },
   methods: {
 
   },
   components: {
-    Discount
-    // === > Discount : 위에서 작명한 변수명   
+    Discount : discount,
+    Modal : modal,
+    Card : card,
+    // === > discount : 위에서 작명한 변수명   
     //이렇게 작성해도 ㄱㅊ  앞뒤로 같으면 하나로 축약가능
   }
 }
