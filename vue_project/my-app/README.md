@@ -8,7 +8,7 @@ npm
 Node Package Manager
 ### npm 설치
 ```swift
-npm i -g @vue/cli
+npm install -g @vue/cli
 ```
 https://nodejs.org/ko/download/
 
@@ -17,7 +17,7 @@ https://nodejs.org/ko/download/
 npm i -g @vue/cli
 ```
 ### vue 프로젝트 생성
+
 ```swift
-vue create [프로젝트명]
+vue create my-project
 ```
-ex) vue create vue_web
