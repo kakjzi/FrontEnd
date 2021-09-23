@@ -24,7 +24,7 @@
 
 <Card @openModal="isShowModal = true; numItem=$event;" @report="신고수[i]++;" v-for="(item,i) in 원룸" :key="i" :isShowModal="isShowModal" :원룸= "원룸[i]" :신고수="신고수[i]"/>
 </template>
-
+``
 <script>
 import data from './post';
 import discount from './components/Discount.vue';
