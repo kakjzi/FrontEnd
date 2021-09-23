@@ -1,5 +1,6 @@
 module.exports = {
     devServer: {
-    overlay: false
+    overlay: false,
+    publicPath : '/vue_project1',
     }
 }
