@@ -1,6 +1,4 @@
-# my-app
-
-Vue toy project
+# Vue toy project
  
 ## 개발환경 구축하기
 npm
