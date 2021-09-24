@@ -6,14 +6,11 @@
   <div v-if="step == 1">
     <div
       class="upload-image"
-      :style="{ backgroundImage: `url(${upload_URL})` }"
+      :style="{ backgroundImage: `url(${upload_URL})`}"
     ></div>
     <div class="filters">
-      <div class="filter-1"></div>
-      <div class="filter-1"></div>
-      <div class="filter-1"></div>
-      <div class="filter-1"></div>
-      <div class="filter-1"></div>
+      <FilterBox v-for="(item,i) in Filters" :key="i" :upload_URL="upload_URL" :Filter="Filters[i]"
+      @selectImg="$emit('selectImg', $event.target.value)"/>
     </div>
   </div>
 
@@ -31,11 +28,19 @@
 
 <script>
 import Post from "./Post.vue";
+import FilterBox from "./FilterBox.vue";
+import Filters from "../jigramFilter";
 
 export default {
   name: "Container",
+  data (){
+    return {
+      Filters : Filters,
+    }
+  },
   components: {
     Post,
+    FilterBox,
   },
   props: {
     step: Number,

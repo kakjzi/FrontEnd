@@ -11,7 +11,8 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :step="step" :postData="postData" :upload_URL="upload_URL" @write="writeContent = $event" />
+  <Container :step="step" :postData="postData" :upload_URL="upload_URL" 
+  @write="writeContent = $event" @selectImg="upload_URL = $event"/>
   <button  v-if ="step == 0" @click="more(morePostNum)">더보기 (ajax 기능구현)</button>
 
   <div class="footer">
@@ -123,7 +124,7 @@ ul {
   top: 0;
 }
 .header-button-left {
-  color: skyblue;
+  color: black;
   float: left;
   width: 50px;
   padding-left: 20px;
@@ -131,7 +132,7 @@ ul {
   margin-top: 10px;
 }
 .header-button-right {
-  color: skyblue;
+  color: black;
   float: right;
   text-align: right;
   padding-right: 20px;
