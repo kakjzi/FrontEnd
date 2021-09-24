@@ -1,37 +1,98 @@
 <template>
   <div class="header">
-    <ul class="header-button-left">
-      <li>Cancel</li>
-    </ul>
-    <ul class="header-button-right">
-      <li>Next</li>
-    </ul>
+    <div v-if="!step == 0">
+      <ul class="header-button-left">
+        <li @click="step = 0">Cancel</li>
+      </ul>
+      <ul class="header-button-right">
+        <li @click="actionSomeThing">{{btn_right[step-1]}}</li>
+      </ul>
+    </div>
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :postData="postData"/>
+  <Container :step="step" :postData="postData" :upload_URL="upload_URL" @write="writeContent = $event" />
+  <button  v-if ="step == 0" @click="more(morePostNum)">더보기 (ajax 기능구현)</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
-      <input type="file" id="file" class="inputfile" />
-      <label for="file" class="input-plus">+</label>
+      <input @change="uploadFile" accept="image/*" type="file" id="file" class="inputfile" />
+      <div v-if ="step == 0" >
+        <label for="file" class="input-plus">+</label>
+      </div>
     </ul>
   </div>
 </template>
 
 <script>
-import Container from "./components/Container.vue";
-import Data from "./components/data.js";
+import Container from "./components/Container.vue"
+import Data from "./components/data.js"
+import axios from 'axios'
 
 export default {
   name: "App",
   data(){
     return {
+      btn_right : ['Next','Complete'],
       postData : Data,
+      morePostNum : 0,
+      step : 0,
+      upload_URL : '',
+      writeContent : '',
     }
   },
   components: {
     Container,
+  },
+  methods: {
+    more(morePostNum){
+      axios.get(`https://kakjzi.github.io/more${morePostNum}.json`)
+      .then((result)=> {
+        //success
+        this.postData.push(result.data);
+        this.morePostNum ++;
+      }).catch((err)=>{
+        console.log(err);
+        this.morePostNum = 0 ;
+        alert("다시하면 될듯?")
+      })
+    },
+    uploadFile(e){
+      let userFile = e.target.files;
+      let fileType = ['image'];
+      const userFileType = userFile[0].type.split('/')
+      /*console.log(파일);  -> fileLIst
+      console.log(파일[0]); -> file
+      console.log(파일[0].type); */ 
+      if (userFileType[0] == fileType){
+        let upload_URL = URL.createObjectURL(userFile[0]);
+        console.log(upload_URL);
+        this.upload_URL = upload_URL.valueOf(Blob);
+        this.step++;
+      }
+    },
+    actionSomeThing(){
+      let dt = new Date();
+      const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "June",
+        "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      let dateStr = `${monthNames[(dt.getMonth())]} ${dt.getDate()}`;
+
+      if (this.step == 2){
+        this.step = 0;
+        this.postData.unshift({
+          name: "신지우",
+          userImage: this.postData[0].userImage,
+          postImage: this.upload_URL,
+          likes: 9999,
+          date: dateStr,
+          liked: false,
+          content: this.writeContent,
+          filter: "perpetua"
+        })
+      }else {
+        this.step = 2;
+      }
+    }
   },
 };
 </script>
@@ -56,7 +117,7 @@ ul {
 .header {
   width: 100%;
   height: 40px;
-  background-color: white;
+  background-color: rgb(219, 219, 219);
   padding-bottom: 8px;
   position: sticky;
   top: 0;
@@ -72,16 +133,20 @@ ul {
 .header-button-right {
   color: skyblue;
   float: right;
-  width: 50px;
+  text-align: right;
+  padding-right: 20px;
+  width: 80px;
   cursor: pointer;
   margin-top: 10px;
+
+ 
 }
 .footer {
   width: 100%;
   position: sticky;
   bottom: 0;
   padding-bottom: 10px;
-  background-color: white;
+  background-color: rgb(219, 219, 219);;
 }
 .footer-button-plus {
   width: 80px;

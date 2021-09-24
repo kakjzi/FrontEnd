@@ -1,14 +1,14 @@
 <template>
   <div class="post">
     <div class="post-header">
-      <div class="profile"></div>
-      <span class="profile-name">ChanKim</span>
+      <div class="profile" :style="{ backgroundImage : `url(${postData[count].userImage})`}"></div>
+      <span class="profile-name">{{postData[count].name}}</span>
     </div>
-    <div class="post-body"></div>
+    <div class="post-body" :style="{ backgroundImage : `url(${postData[count].postImage})`}"></div>
     <div class="post-content">
-      <p>43 Likes</p>
-      <p><strong>글쓴이아이디</strong> 임시내용</p>
-      <p class="date">May 15</p>
+      <p @click="heartCount++">💚 {{heartCount}}</p>
+      <p><strong>{{postData[count].name}}</strong> {{postData[count].content}}</p>
+      <p class="date">{{postData[count].date}}</p>
     </div>
   </div>
 </template>
@@ -16,8 +16,14 @@
 <script>
 export default {
     name : "Post",
+    data(){
+      return {
+        heartCount : 0,
+      }
+    },
     props :{
         postData : Array,
+        count : Number,
     }
 };
 </script>
@@ -27,7 +33,6 @@ export default {
   width: 100%;
 }
 .profile {
-  background-image: url("https://placeimg.com/100/100/arch");
   width: 30px;
   height: 30px;
   background-size: 100%;
@@ -46,7 +51,6 @@ export default {
   padding: 10px;
 }
 .post-body {
-  background-image: url("https://placeimg.com/640/480/animals");
   height: 450px;
   background-position: center;
   background-size: cover;

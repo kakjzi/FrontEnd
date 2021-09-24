@@ -1,6 +1,6 @@
 export default [
     {
-      name: "Kim Hyun",
+      name: "신지우",
       userImage: "https://placeimg.com/100/100/arch",
       postImage: "https://placeimg.com/640/480/arch",
       likes: 36,
@@ -10,7 +10,7 @@ export default [
       filter: "perpetua"
     },
     {
-      name: "John Doe",
+      name: "양은호",
       userImage: "https://placeimg.com/200/200/people",
       postImage: "https://placeimg.com/640/480/people",
       likes: 20,
@@ -20,7 +20,7 @@ export default [
       filter: "clarendon"
     },
     {
-      name: "Minny",
+      name: "최시은",
       userImage: "https://placeimg.com/100/100/animals",
       postImage: "https://placeimg.com/640/480/animals",
       likes: 49,

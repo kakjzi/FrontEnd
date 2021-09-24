@@ -1,0 +1,10 @@
+{
+    "name": "Dennis",
+    "userImage": "https://placeimg.com/100/100/people",
+    "postImage": "https://placeimg.com/640/480/people",
+    "likes": 65,
+    "date": "May 25",
+    "liked": false,
+    "content": "더보기로 요청한 게시물1입니다.",
+    "filter": "perpetua"
+  }
