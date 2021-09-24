@@ -1,4 +1,5 @@
-
+## 인스타그램 대충 따라해보기 
+---
 style 적용  :style = { color : "Red" }
 ---
 * 클라이언트에서 서버 요청방식
@@ -39,7 +40,7 @@ axios.get('URL').then(function(result){
 * 이미지 업로드 한 것을 html에 보여주기
 	- FileReader, URL.createObjectURL()
 
-> FileReader :  파일을 글자로 변환해줌
+> FileReader :  파일을 글자로 변환해줌 <br>
 URL.createObjectURL() :  이미지의 가상URL 생성
 가상 URL -> blob : http://~~~ 형태
 
