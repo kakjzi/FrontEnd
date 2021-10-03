@@ -4,9 +4,12 @@
       <div class="profile" :style="{ backgroundImage : `url(${postData[count].userImage})`}"></div>
       <span class="profile-name">{{postData[count].name}}</span>
     </div>
-    <div class="post-body" :style="{ backgroundImage : `url(${postData[count].postImage})`}"></div>
+    <div :class="`${postData[count].filter} post-body`" 
+    :style="{ backgroundImage : `url(${postData[count].postImage})`}"
+    @click="$store.commit('clickPost')">
+    </div>
     <div class="post-content">
-      <p @click="heartCount++">💚 {{heartCount}}</p>
+      <p @click="$store.commit('clickPost')">💚 {{$store.state.like}}</p>
       <p><strong>{{postData[count].name}}</strong> {{postData[count].content}}</p>
       <p class="date">{{postData[count].date}}</p>
     </div>
@@ -24,7 +27,8 @@ export default {
     props :{
         postData : Array,
         count : Number,
-    }
+    },
+
 };
 </script>
 

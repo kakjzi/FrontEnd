@@ -10,9 +10,17 @@
     </div>
     <img src="./assets/logo.png" class="logo" />
   </div>
+  
+<h4>안녕 {{name}}</h4>
+<h4>나이 {{age}}</h4>
+<button @click="changeName()">버튼</button>
+<button @click='addCount(10)'>버튼</button>
 
-  <Container :step="step" :postData="postData" :upload_URL="upload_URL" 
-  @write="writeContent = $event" @selectImg="upload_URL = $event"/>
+<p>{{$store.state.more}}</p>
+<button @click="getdata()">더보기 버튼</button>
+
+  <Container :step="step" :postData="postData" :userFilter="userFilter" :upload_URL="upload_URL" 
+  @write="writeContent = $event" />
   <button  v-if ="step == 0" @click="more(morePostNum)">더보기 (ajax 기능구현)</button>
 
   <div class="footer">
@@ -29,7 +37,11 @@
 import Container from "./components/Container.vue"
 import Data from "./components/data.js"
 import axios from 'axios'
+import {mapActions, mapMutations, mapState} from 'vuex'
 
+
+//PWA => manifest.json  , service-worker.js 필요 
+// => 라이브리러 설치(vue add pwa) 후 build 하면 생김
 export default {
   name: "App",
   data(){
@@ -40,12 +52,38 @@ export default {
       step : 0,
       upload_URL : '',
       writeContent : '',
+      userFilter : '',
     }
+  },
+  mounted() {
+    this.emitter.on('click',(a)=>{
+      this.userFilter = a
+    });
   },
   components: {
     Container,
   },
+
+  // methods vs computed
+  // 호출마다 실행 vs 딱 한번. (return 필수)
+  computed : {
+    // name(){
+    //   return this.$store.state.name
+    // },
+    // age(){
+    //   return this.$store.state.age
+    // },
+
+    //vuex state 한번에 꺼내쓰기.
+    //...mapState({ 내이름 : 'name', }),  
+    
+    ...mapState(['name','age','like']),
+  },
+
   methods: {
+    ...mapActions(['getdata']),
+    ...mapMutations(['changeName', 'addCount']),
+
     more(morePostNum){
       axios.get(`https://kakjzi.github.io/more${morePostNum}.json`)
       .then((result)=> {
@@ -88,8 +126,9 @@ export default {
           date: dateStr,
           liked: false,
           content: this.writeContent,
-          filter: "perpetua"
+          filter: this.userFilter,
         })
+        console.log(this.userFilter)
       }else {
         this.step = 2;
       }
