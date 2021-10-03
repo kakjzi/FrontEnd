@@ -23,7 +23,7 @@ clone
 .DS_Store
 node_modules
 /dist
-
+vue_project/my-app/dist/*
 # local env files
 .env.local
 .env.*.local
