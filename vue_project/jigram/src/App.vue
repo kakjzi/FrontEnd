@@ -16,12 +16,12 @@
 <button @click="changeName()">버튼</button>
 <button @click='addCount(10)'>버튼</button>
 
-<p>{{$store.state.more}}</p>
-<button @click="getdata()">더보기 버튼</button>
-
   <Container :step="step" :postData="postData" :userFilter="userFilter" :upload_URL="upload_URL" 
   @write="writeContent = $event" />
   <button  v-if ="step == 0" @click="more(morePostNum)">더보기 (ajax 기능구현)</button>
+  
+
+  <button @click="getdata()">더보기 (vuex-actions)</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -75,8 +75,6 @@ export default {
     // },
 
     //vuex state 한번에 꺼내쓰기.
-    //...mapState({ 내이름 : 'name', }),  
-    
     ...mapState(['name','age','like']),
   },
 
